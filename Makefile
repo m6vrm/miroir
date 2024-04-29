@@ -1,4 +1,3 @@
-TARGET		= miroir
 TARGET_TEST	= miroir_test
 OUT			= build
 
@@ -14,7 +13,7 @@ release: build
 debug: export CMAKE_BUILD_TYPE=Debug
 debug: build
 
-build: $(OUT)/$(TARGET)
+build: $(OUT)/$(TARGET_TEST)
 
 configure:
 	cmake \
@@ -22,12 +21,6 @@ configure:
 		-B "$(OUT)" \
 		-G "Unix Makefiles" \
 		-D CMAKE_EXPORT_COMPILE_COMMANDS=ON
-
-$(OUT)/$(TARGET): configure $(SRC)
-	cmake \
-		--build "$(OUT)" \
-		--target "$(TARGET)" \
-		--parallel
 
 $(OUT)/$(TARGET_TEST): configure $(SRC) $(SRC_TEST)
 	cmake \
@@ -37,17 +30,6 @@ $(OUT)/$(TARGET_TEST): configure $(SRC) $(SRC_TEST)
 
 clean:
 	$(RM) -r "$(OUT)"
-
-install:
-	strip "$(OUT)/$(TARGET)"
-	install -d "$(DESTDIR)$(BINDIR)"
-	install -m 755 "$(OUT)/$(TARGET)" "$(DESTDIR)$(BINDIR)"
-
-uninstall:
-	$(RM) "$(DESTDIR)$(BINDIR)/$(TARGET)"
-
-run: $(OUT)/$(TARGET)
-	"./$(OUT)/$(TARGET)"
 
 test: $(OUT)/$(TARGET_TEST)
 	"./$(OUT)/$(TARGET_TEST)"
@@ -91,3 +73,9 @@ asan: test
 
 ubsan: export CMAKE_BUILD_TYPE=Ubsan
 ubsan: test
+
+.PHONY: release debug
+.PHONY: configure build clean
+.PHONY: test
+.PHONY: format check
+.PHONY: asan ubsan
