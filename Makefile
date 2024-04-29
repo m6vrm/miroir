@@ -61,7 +61,6 @@ check:
 		$(SRC) $(SRC_TEST)
 
 	codespell \
-		-L poost \
 		include \
 		tests \
 		Makefile \
