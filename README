@@ -1,8 +1,8 @@
 Features
 ========
 
-    *   Custom and generic types support
-    *   Type and value variants support
+    *   Support for custom and generic types
+    *   Support for type and value variants
     *   No runtime dependencies (well, technically)
 
 Designed to work with yaml-cpp (https://github.com/jbeder/yaml-cpp), but can be
