@@ -1,9 +1,9 @@
 Features
 ========
 
-    *   Support for custom and generic types
-    *   Support for type and value variants
-    *   No runtime dependencies (well, technically)
+*   Support for custom and generic types
+*   Support for type and value variants
+*   No runtime dependencies (well, technically)
 
 Designed to work with yaml-cpp (https://github.com/jbeder/yaml-cpp), but can be
 used with any library for which the miroir::NodeAccessor template specialization
@@ -12,7 +12,7 @@ exists.
 Requirements
 ============
 
-    *   C++20 compatible compiler
+*   C++20 compatible compiler
 
 Usage
 =====
@@ -44,10 +44,10 @@ Built-in types
 
 NOTE: Quoted values are always represent a string.
 
-any         numeric     boolean
-map         num         bool
-list        integer     string
-scalar      int         str
+    any         numeric     boolean
+    map         num         bool
+    list        integer     string
+    scalar      int         str
 
 Specification
 =============
