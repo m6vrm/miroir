@@ -1,3 +1,5 @@
+Single-header YAML schema validation library for C++.
+
 Features
 ========
 
