@@ -427,7 +427,7 @@ template <typename Node> auto node_is_boolean(const Node &node) -> bool {
         return false;
     }
 
-    constexpr struct {
+    static constexpr struct {
         std::string_view trueval, falseval;
     } boolvals[] = {
         {"y", "n"},
