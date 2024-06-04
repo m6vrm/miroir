@@ -427,8 +427,8 @@ template <typename Node> auto node_is_boolean(const Node &node) -> bool {
         return false;
     }
 
-    static const struct {
-        std::string trueval, falseval;
+    constexpr struct {
+        std::string_view trueval, falseval;
     } boolvals[] = {
         {"y", "n"},
         {"yes", "no"},
@@ -547,29 +547,30 @@ Validator<Node>::Validator(
       m_root{schema_root(schema)}, m_validators{type_validators} {
 
     // todo: add built-in generic types (list<T>, map<K;V>)
-    static const std::map<std::string, TypeValidator> builtin_validators = {
-        // basic
-        {"any", [](const Node &) -> bool { return true; }},
-        {"map", NodeAccessor::is_map},
-        {"list", NodeAccessor::is_sequence},
-        {"scalar", NodeAccessor::is_scalar},
+    static const std::map<std::string_view, TypeValidator> builtin_validators =
+        {
+            // basic
+            {"any", [](const Node &) -> bool { return true; }},
+            {"map", NodeAccessor::is_map},
+            {"list", NodeAccessor::is_sequence},
+            {"scalar", NodeAccessor::is_scalar},
 
-        // numeric
-        {"numeric", impl::node_is_number},
-        {"num", impl::node_is_number},
+            // numeric
+            {"numeric", impl::node_is_number},
+            {"num", impl::node_is_number},
 
-        // integer
-        {"integer", impl::node_is_integer},
-        {"int", impl::node_is_integer},
+            // integer
+            {"integer", impl::node_is_integer},
+            {"int", impl::node_is_integer},
 
-        // bool
-        {"boolean", impl::node_is_boolean},
-        {"bool", impl::node_is_boolean},
+            // bool
+            {"boolean", impl::node_is_boolean},
+            {"bool", impl::node_is_boolean},
 
-        // string
-        {"string", impl::node_is_string},
-        {"str", impl::node_is_string},
-    };
+            // string
+            {"string", impl::node_is_string},
+            {"str", impl::node_is_string},
+        };
 
     m_validators.insert(builtin_validators.cbegin(), builtin_validators.cend());
 }
