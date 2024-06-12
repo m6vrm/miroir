@@ -84,6 +84,7 @@ targets:
     sources:
       - tests/miroir_test.cpp
     dependencies:
+      - miroir::miroir
+
       - doctest::doctest_with_main
       - yaml-cpp
-      - miroir::miroir

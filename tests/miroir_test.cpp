@@ -1,13 +1,12 @@
 #define MIROIR_IMPLEMENTATION
 #define MIROIR_YAMLCPP_SPECIALIZATION
-#include <miroir/miroir.hpp>
-
-#include <doctest/doctest.h>
-#include <yaml-cpp/yaml.h>
 
 #include <algorithm>
 #include <cctype>
+#include <doctest/doctest.h>
+#include <miroir/miroir.hpp>
 #include <vector>
+#include <yaml-cpp/yaml.h>
 
 /// Misc
 
