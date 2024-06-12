@@ -1,7 +1,7 @@
-# Generated using cgen 0.1.0 — https://gitlab.com/madyanov/cgen
+# Generated using cgen 1.1.1 — https://github.com/m6vrm/cgen
 # DO NOT EDIT
 
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.11)
 project(miroir)
 
 #
@@ -14,7 +14,7 @@ function(cgen_package_0)
     if(EXISTS ${PROJECT_SOURCE_DIR}/external/doctest/CMakeLists.txt)
         add_subdirectory(external/doctest)
     else()
-        message(WARNING "Package external/doctest doesn't have CMakeLists.txt")
+        message(NOTICE "Package external/doctest doesn't have CMakeLists.txt")
     endif()
 endfunction()
 if(PROJECT_IS_TOP_LEVEL)
@@ -30,7 +30,7 @@ function(cgen_package_1)
     if(EXISTS ${PROJECT_SOURCE_DIR}/external/yaml-cpp/CMakeLists.txt)
         add_subdirectory(external/yaml-cpp)
     else()
-        message(WARNING "Package external/yaml-cpp doesn't have CMakeLists.txt")
+        message(NOTICE "Package external/yaml-cpp doesn't have CMakeLists.txt")
     endif()
 endfunction()
 if(PROJECT_IS_TOP_LEVEL)
@@ -42,13 +42,9 @@ endif()
 #
 
 # target miroir
-function(cgen_target_miroir)
+function(cgen_target_0)
     add_library(miroir INTERFACE)
     add_library(miroir::miroir ALIAS miroir)
-    target_sources(miroir
-        INTERFACE
-            include/miroir/miroir.hpp
-    )
     target_include_directories(miroir
         INTERFACE
             include
@@ -67,10 +63,10 @@ function(cgen_target_miroir)
             >
     )
 endfunction()
-cgen_target_miroir()
+cgen_target_0()
 
 # target miroir_test
-function(cgen_target_miroir_test)
+function(cgen_target_1)
     add_executable(miroir_test)
     target_sources(miroir_test
         PRIVATE
@@ -78,9 +74,9 @@ function(cgen_target_miroir_test)
     )
     target_link_libraries(miroir_test
         PRIVATE
+            miroir::miroir
             doctest::doctest_with_main
             yaml-cpp
-            miroir::miroir
     )
     set_target_properties(miroir_test PROPERTIES
         CXX_STANDARD 20
@@ -125,5 +121,5 @@ function(cgen_target_miroir_test)
     )
 endfunction()
 if(PROJECT_IS_TOP_LEVEL)
-    cgen_target_miroir_test()
+    cgen_target_1()
 endif()

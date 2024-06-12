@@ -16,6 +16,8 @@ debug: build
 build: $(TESTS)
 
 configure:
+	-cgen -g
+
 	cmake \
 		-S . \
 		-B "$(OUT)" \

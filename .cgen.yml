@@ -72,8 +72,6 @@ targets:
       - common
     includes:
       - include
-    sources:
-      - include/miroir/miroir.hpp
 
   - executable: miroir_test
     if: PROJECT_IS_TOP_LEVEL
