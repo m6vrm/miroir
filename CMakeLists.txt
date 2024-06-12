@@ -74,8 +74,8 @@ function(cgen_target_1)
     )
     target_link_libraries(miroir_test
         PRIVATE
-            miroir::miroir
             doctest::doctest_with_main
+            miroir::miroir
             yaml-cpp
     )
     set_target_properties(miroir_test PROPERTIES

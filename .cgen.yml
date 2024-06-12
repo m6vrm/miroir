@@ -76,13 +76,12 @@ targets:
   - executable: miroir_test
     if: PROJECT_IS_TOP_LEVEL
     templates:
-      - common
       - asan
+      - common
       - ubsan
     sources:
       - tests/miroir_test.cpp
     dependencies:
-      - miroir::miroir
-
       - doctest::doctest_with_main
+      - miroir::miroir
       - yaml-cpp
