@@ -15,9 +15,10 @@ debug: build
 
 build: $(TESTS)
 
-configure:
+CMakeLists.txt: .cgen.yml
 	-cgen -g
 
+configure: CMakeLists.txt
 	cmake \
 		-S . \
 		-B "$(OUT)" \
