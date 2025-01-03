@@ -473,6 +473,7 @@ auto Error<Node>::description(int max_depth) const -> std::string {
     }
 
     MIROIR_ASSERT(false, "invalid error type: " << static_cast<int>(type));
+    return "";
 }
 
 /// Context
