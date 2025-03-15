@@ -15,7 +15,7 @@ debug: build
 
 build: $(TESTS)
 
-CMakeLists.txt: .cgen.yml
+CMakeLists.txt: cgen.yml
 	-cgen -g
 
 configure: CMakeLists.txt
@@ -69,7 +69,7 @@ check:
 		Makefile \
 		README.md \
 		LICENSE \
-		.cgen.yml
+		cgen.yml
 
 asan: export CMAKE_BUILD_TYPE=Asan
 asan: test
